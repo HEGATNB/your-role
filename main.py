@@ -2,11 +2,11 @@ from datetime import date
 
 participant_name = "Иван Петров"
 participant_skill = "Python"
-participant_experience = 2          # лет опыта
+participant_experience = 2
 
 role_name = "Backend-разработчик"
 role_required_skill = "Python"
-role_min_experience = 1             # минимальный опыт, лет
+role_min_experience = 1
 
 project_name = "Учебный проект: Telegram-бот"
 project_deadline = date(2026, 12, 15)
@@ -14,6 +14,7 @@ project_is_active = True
 
 team_size = 4
 max_team_size = 5
+
 
 def is_participant_suitable(
     skill: str,
@@ -25,12 +26,14 @@ def is_participant_suitable(
         return True
     return False
 
+
 def can_add_to_team(current_size: int, limit: int, is_active: bool) -> bool:
     if not is_active:
         return False
     if current_size >= limit:
         return False
     return True
+
 
 def get_assignment_status(
     suitable: bool,
@@ -51,7 +54,6 @@ def free_slots(current_size: int, limit: int) -> int:
     return limit - current_size
 
 
-# Основной сценарий
 def main() -> None:
     suitable = is_participant_suitable(
         participant_skill,
