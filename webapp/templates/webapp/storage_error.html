@@ -1,0 +1,4 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Данные временно недоступны{% endblock %}
+{% block breadcrumb %}Ошибка хранилища{% endblock %}
+{% block content %}<section class="detail-hero"><p class="eyebrow">ВРЕМЕННАЯ ПРОБЛЕМА</p><h1>Не удалось загрузить данные</h1><p class="lead">Проверьте JSON-файлы в каталоге data и попробуйте снова.</p><a class="button button-dark" href="{% url 'webapp:home' %}">Вернуться на главную →</a></section>{% endblock %}

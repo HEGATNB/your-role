@@ -1,0 +1,7 @@
+{% load static %}
+<article class="project-card">
+  <div class="project-card-top"><span class="project-icon"><img src="{% static 'webapp/icons/project-card.svg' %}" alt="" aria-hidden="true"></span><span class="status-pill {% if project.is_active %}status-active{% else %}status-muted{% endif %}">{% if project.is_active %}Активен{% else %}Завершён{% endif %}</span></div>
+  <h3><a href="{% url 'webapp:project_detail' project.id %}">{{ project.name }}</a></h3>
+  <p>{{ project.description }}</p>
+  <div class="card-footer"><span>Дедлайн {{ project.deadline|date:'j E Y' }}</span><span>{{ teams|length }}{% if teams|length == 1 %} команда{% elif teams|length > 1 %} команды{% else %} команд{% endif %}</span></div>
+</article>

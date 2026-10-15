@@ -1,0 +1,1 @@
+<article class="role-card"><div class="role-symbol">{{ role.name|slice:':1' }}</div><div class="role-copy"><h3><a href="{% url 'webapp:role_detail' role.id %}">{{ role.name }}</a></h3><p>{{ role.description }}</p><div class="role-requirement">Навык: <b>{{ role.required_skill }}</b><span>Опыт: {{ role.min_experience }}+ лет</span></div></div></article>
