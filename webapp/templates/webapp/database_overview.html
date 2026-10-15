@@ -1,0 +1,9 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Данные SQLite{% endblock %}
+{% block breadcrumb %}Данные SQLite{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">SQLITE И SQL</p><h1>Данные проекта</h1><p class="lead">Эти страницы читают самостоятельную базу YourRole напрямую через sqlite3.</p></div></section>
+<nav class="section-heading"><a class="text-link" href="{% url 'webapp:database_available_teams' %}">Команды со свободными местами →</a><a class="text-link" href="{% url 'webapp:database_statistics' %}">Статистика ролей →</a></nav>
+<section class="section-block"><div class="section-heading"><h2>Проекты</h2></div><div class="project-grid">{% for project in projects %}<article class="project-card"><h3>{{ project.name }}</h3><p>Дедлайн: {{ project.deadline }}</p></article>{% empty %}<p>Нет проектов в базе данных.</p>{% endfor %}</div></section>
+<section class="section-block"><div class="section-heading"><h2>Команды</h2></div><div class="table-wrap"><table><thead><tr><th>Команда</th><th>Проект</th><th>Участников</th><th>Вместимость</th></tr></thead><tbody>{% for team in teams %}<tr><td>{{ team.name }}</td><td>{{ team.project_name }}</td><td>{{ team.member_count }}</td><td>{{ team.max_size }}</td></tr>{% empty %}<tr><td colspan="4">Нет команд в базе данных.</td></tr>{% endfor %}</tbody></table></div><p>Всего участников: {{ participant_count }}</p></section>
+{% endblock %}

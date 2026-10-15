@@ -1,0 +1,8 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Свободные места{% endblock %}
+{% block breadcrumb %}Свободные места{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">SQL ФИЛЬТРАЦИЯ И JOIN</p><h1>Команды со свободными местами</h1><p class="lead">Выберите проект, чтобы найти команды, в которые ещё можно добавить участников.</p></div></section>
+<form method="get" class="filter-form"><label for="project">Проект</label><select id="project" name="project" required><option value="">Выберите проект</option>{% for project in projects %}<option value="{{ project.id }}" {% if selected_id == project.id %}selected{% endif %}>{{ project.name }}</option>{% endfor %}</select><button class="button button-dark" type="submit">Найти</button></form>
+{% if selected_id %}<section class="section-block"><div class="table-wrap"><table><thead><tr><th>Команда</th><th>Участников</th><th>Свободно мест</th></tr></thead><tbody>{% for team in teams %}<tr><td>{{ team.name }}</td><td>{{ team.member_count }} / {{ team.max_size }}</td><td>{{ team.free_slots }}</td></tr>{% empty %}<tr><td colspan="3">В этом проекте нет команд со свободными местами.</td></tr>{% endfor %}</tbody></table></div></section>{% endif %}
+{% endblock %}

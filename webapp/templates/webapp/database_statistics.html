@@ -1,0 +1,8 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Статистика ролей{% endblock %}
+{% block breadcrumb %}Статистика ролей{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">COUNT · AVG · GROUP BY</p><h1>Статистика ролей</h1><p class="lead">Распределение участников по назначенным ролям из SQLite.</p></div></section>
+<section class="stat-grid"><article class="stat-card"><span class="stat-label">Участников</span><strong>{{ participant_count }}</strong></article><article class="stat-card"><span class="stat-label">Средний опыт</span><strong>{{ average_experience|floatformat:1 }}</strong><span class="stat-note">лет</span></article></section>
+<section class="section-block"><div class="table-wrap"><table><thead><tr><th>Роль</th><th>Назначено</th><th>Средний опыт</th></tr></thead><tbody>{% for row in role_stats %}<tr><td>{{ row.name }}</td><td>{{ row.assigned_count }}</td><td>{{ row.average_experience|floatformat:1|default:'—' }}</td></tr>{% empty %}<tr><td colspan="3">Нет ролей в базе данных.</td></tr>{% endfor %}</tbody></table></div></section>
+{% endblock %}

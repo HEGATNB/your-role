@@ -3,6 +3,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from django.test import TestCase
+from db.import_json import import_json
 
 
 class PageTests(TestCase):
@@ -33,3 +34,32 @@ class PageTests(TestCase):
                 response = self.client.get("/projects/")
         self.assertEqual(response.status_code, 503)
         self.assertContains(response, "Не удалось загрузить данные", status_code=503)
+
+
+class SQLitePagesTests(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        import_json()
+
+    def test_sqlite_pages_render(self):
+        for url in (
+            "/database/",
+            "/database/available-teams/?project=1",
+            "/database/statistics/",
+        ):
+            with self.subTest(url=url):
+                response = self.client.get(url)
+                self.assertEqual(response.status_code, 200)
+
+    def test_available_team_search_uses_selected_project(self):
+        response = self.client.get(
+            "/database/available-teams/", {"project": 1}
+        )
+        self.assertContains(response, "Команда Альфа")
+        self.assertContains(response, "2")
+
+    def test_statistics_show_role_names(self):
+        response = self.client.get("/database/statistics/")
+        self.assertContains(response, "Backend-разработчик")
+        self.assertContains(response, "Тестировщик")

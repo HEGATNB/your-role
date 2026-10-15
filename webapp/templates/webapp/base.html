@@ -21,6 +21,7 @@
         <a href="{% url 'webapp:teams' %}" class="{% if 'team' in request.resolver_match.url_name %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/teams.svg' %}" alt="" aria-hidden="true">Команды</a>
         <a href="{% url 'webapp:participants' %}" class="{% if 'participant' in request.resolver_match.url_name %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/participant.svg' %}" alt="" aria-hidden="true">Участники</a>
         <a href="{% url 'webapp:roles' %}" class="{% if 'role' in request.resolver_match.url_name %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/role.svg' %}" alt="" aria-hidden="true">Роли</a>
+        <a href="{% url 'webapp:database_overview' %}" class="{% if 'database' in request.resolver_match.url_name %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/insight.svg' %}" alt="" aria-hidden="true">Данные SQLite</a>
       </nav>
       <div class="sidebar-bottom"><span class="avatar" aria-hidden="true"><img src="{% static 'webapp/icons/participant.svg' %}" alt=""></span><span>Рабочая группа<small>Учебный проект</small></span><span class="dots" aria-hidden="true">···</span></div>
     </aside>

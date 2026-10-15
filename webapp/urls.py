@@ -13,4 +13,11 @@ urlpatterns = [
     path("participants/<int:object_id>/", views.participant_detail, name="participant_detail"),
     path("roles/", views.roles, name="roles"),
     path("roles/<int:object_id>/", views.role_detail, name="role_detail"),
+    path("database/", views.database_overview, name="database_overview"),
+    path(
+        "database/available-teams/",
+        views.database_available_teams,
+        name="database_available_teams",
+    ),
+    path("database/statistics/", views.database_statistics, name="database_statistics"),
 ]

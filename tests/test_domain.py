@@ -59,3 +59,27 @@ def test_team_interacts_with_participant_and_recommends_preference():
         Role(2, "Python mentor", "Наставник", "Python", 2),
     ]
     assert recommend_role(participant, roles) == roles[1]
+
+
+def test_domain_objects_have_clear_string_representations():
+    project = Project(1, "Приложение", "Описание", date(2026, 12, 15))
+    participant = Participant(2, "Анна", "anna@example.edu", ["Python"])
+    role = Role(3, "Backend", "Серверная часть", "Python")
+    team = Team(4, "Альфа", project.id, 4)
+    assert str(project) == "Приложение"
+    assert str(participant) == "Анна (Python)"
+    assert str(role) == "Backend"
+    assert str(team) == "Альфа"
+
+
+def test_project_deadline_can_be_calculated_for_a_given_date():
+    project = Project(1, "Приложение", "Описание", date(2026, 12, 15))
+    assert project.days_until_deadline(date(2026, 12, 1)) == 14
+
+
+def test_team_rejects_duplicate_member_and_accepts_participant_object():
+    team = Team(1, "Альфа", 1, 2)
+    participant = Participant(7, "Иван", "ivan@example.edu")
+    assert team.add_participant(participant)
+    assert not team.add_participant(participant)
+    assert team.participant_ids == [participant.id]
