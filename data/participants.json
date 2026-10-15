@@ -1,0 +1,5 @@
+[
+  {"id": 1, "name": "Иван Петров", "email": "ivan@example.edu", "skills": ["Python", "Git"], "experience": 2, "preferred_role_ids": [1], "assigned_role_id": 1},
+  {"id": 2, "name": "Анна Смирнова", "email": "anna@example.edu", "skills": ["Аналитика", "SQL"], "experience": 1, "preferred_role_ids": [4], "assigned_role_id": 4},
+  {"id": 3, "name": "Максим Орлов", "email": "maksim@example.edu", "skills": ["Тестирование", "Python"], "experience": 1, "preferred_role_ids": [3], "assigned_role_id": 3}
+]

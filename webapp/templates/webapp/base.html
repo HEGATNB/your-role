@@ -1,0 +1,35 @@
+{% load static project_tags %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="YourRole — команды и распределение ролей">
+  <title>{% block title %}YourRole{% endblock %} · YourRole</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'webapp/icons/role.svg' %}">
+  <link rel="stylesheet" href="{% static 'webapp/css/site.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="{% url 'webapp:home' %}" aria-label="YourRole — главная страница"><span class="brand-logo-window"><img src="{% static 'webapp/images/yourrole-logo.png.png' %}" alt="YourRole"></span></a>
+      <p class="nav-caption">Рабочее пространство</p>
+      <nav class="side-nav" aria-label="Основная навигация">
+        <a href="{% url 'webapp:home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/home.svg' %}" alt="" aria-hidden="true">Обзор</a>
+        <a href="{% url 'webapp:projects' %}" class="{% if 'project' in request.resolver_match.url_name %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/projects.svg' %}" alt="" aria-hidden="true">Проекты</a>
+        <a href="{% url 'webapp:teams' %}" class="{% if 'team' in request.resolver_match.url_name %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/teams.svg' %}" alt="" aria-hidden="true">Команды</a>
+        <a href="{% url 'webapp:participants' %}" class="{% if 'participant' in request.resolver_match.url_name %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/participant.svg' %}" alt="" aria-hidden="true">Участники</a>
+        <a href="{% url 'webapp:roles' %}" class="{% if 'role' in request.resolver_match.url_name %}active{% endif %}"><img class="nav-icon" src="{% static 'webapp/icons/role.svg' %}" alt="" aria-hidden="true">Роли</a>
+      </nav>
+      <div class="sidebar-bottom"><span class="avatar" aria-hidden="true"><img src="{% static 'webapp/icons/participant.svg' %}" alt=""></span><span>Рабочая группа<small>Учебный проект</small></span><span class="dots" aria-hidden="true">···</span></div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar"><span class="breadcrumb">Проекты <span>/</span> <b>{% block breadcrumb %}Обзор{% endblock %}</b></span><div class="top-actions"><button class="icon-button" aria-label="Уведомления"><img src="{% static 'webapp/icons/notification.svg' %}" alt="" aria-hidden="true"></button><span class="avatar avatar-small" aria-label="Профиль пользователя"><img src="{% static 'webapp/icons/participant.svg' %}" alt="" aria-hidden="true"></span></div></header>
+      <div class="page-content">{% block content %}{% endblock %}</div>
+    </main>
+  </div>
+  <script src="{% static 'webapp/js/site.js' %}" defer></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

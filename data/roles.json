@@ -1,0 +1,6 @@
+[
+  {"id": 1, "name": "Backend-разработчик", "description": "Разрабатывает серверную логику приложения.", "required_skill": "Python", "min_experience": 1},
+  {"id": 2, "name": "Frontend-разработчик", "description": "Создаёт пользовательский интерфейс проекта.", "required_skill": "HTML", "min_experience": 0},
+  {"id": 3, "name": "Тестировщик", "description": "Проверяет сценарии и качество продукта.", "required_skill": "Тестирование", "min_experience": 0},
+  {"id": 4, "name": "Аналитик", "description": "Уточняет требования и структуру данных.", "required_skill": "Аналитика", "min_experience": 0}
+]

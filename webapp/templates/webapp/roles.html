@@ -1,0 +1,3 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Роли{% endblock %}{% block breadcrumb %}Роли{% endblock %}
+{% block content %}<section class="page-heading"><div><p class="eyebrow">ЗОНА ОТВЕТСТВЕННОСТИ</p><h1>Роли</h1><p class="lead">Позиции в команде и навыки, необходимые для них.</p></div><span class="count-chip">{{ roles|length }} роли</span></section><div class="role-grid">{% for role in roles %}{% include 'webapp/_role_card.html' with role=role %}{% empty %}<div class="empty-state">Роли пока не добавлены.</div>{% endfor %}</div>{% endblock %}

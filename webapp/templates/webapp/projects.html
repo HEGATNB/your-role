@@ -1,0 +1,3 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Проекты{% endblock %}{% block breadcrumb %}Проекты{% endblock %}
+{% block content %}<section class="page-heading"><div><p class="eyebrow">ВАША РАБОТА</p><h1>Проекты</h1><p class="lead">Учебные задачи и команды, которые работают над ними.</p></div><span class="count-chip">{{ projects|length }} проекта</span></section><div class="project-grid listing-grid">{% for project in projects %}{% include 'webapp/_project_card.html' with project=project teams=teams %}{% empty %}<div class="empty-state">Проектов пока нет.</div>{% endfor %}</div>{% endblock %}
